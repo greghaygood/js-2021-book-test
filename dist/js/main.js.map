@@ -1,1 +1,1 @@
-{"version":3,"sources":["main.js"],"names":["Outliner","init"],"mappings":";;AACAA,QAAQ,CAACC,IAAT,CAAc,SAAd","sourcesContent":["\nOutliner.init(\"article\");\n"],"file":"main.js"}
+{"version":3,"sources":["main.js"],"names":["Outliner","init","Tooltip"],"mappings":";;AACAA,QAAQ,CAACC,IAAT,CAAc,SAAd;AAEAC,OAAO,CAACD,IAAR,CAAa,gBAAb","sourcesContent":["\nOutliner.init(\"article\");\n\nTooltip.init(\"[data-tooltip]\");"],"file":"main.js"}
