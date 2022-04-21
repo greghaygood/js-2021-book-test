@@ -25,11 +25,39 @@
             }
         }
 
-        function setupTooltip(element, index) {
+        function setupTooltip(element, index, options) {
+            const ttData = element.dataset;
+
+            // combine values from multiple sources into one object
+            // the ES5 way:
+            const v5options = Object.assign(
+                {
+                    color: '#444',
+                }, 
+                options, 
+                ttData);
+            console.log("v5options", v5options);
+            
+            // the ES6 way:
+            const v6options = {
+                color: '#444',
+                fontWeight: 'bold',
+
+                ...options,
+                ...ttData,
+            }
+            console.log("v6options", v6options);
+
             // const info = element.getAttribute("data-tooltip");
-            const info = element.dataset.tooltip;
+            const info = ttData.tooltip;
             if (info) {
                 element.classList.add("tooltip-on");
+                if (v6options.color) { 
+                    element.style.color = v6options.color
+                }
+                if (v6options.backgroundColor) {
+                    element.style.backgroundColor = v6options.backgroundColor;
+                }
                 // element.style.left = element.style.left + 100;
 
                 const tooltip = document.createElement("div");
@@ -44,9 +72,17 @@
 
         }
 
-        function init(selector) {
+        function init(selector, options) {
             // console.log("setting up tooltips...", selector)
-            document.querySelectorAll(selector).forEach(setupTooltip)
+            /*  
+                function doA(paramA, paramB) { ... }
+                var doA = function(paramA, paramB) { ... }
+                var doA = (paramA, paramB) => { ... }
+                var doA = (paramA, paramB) => oneLineFunctionBody()
+                var doA = (paramA) => { ... }
+                var doA = paramA => { ... }
+            */
+            document.querySelectorAll(selector).forEach((element, index) => setupTooltip(element, index, options))
         }
 
         return {
