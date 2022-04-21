@@ -14,7 +14,7 @@
                 tt.classList.add("visible");
             }
         }
-
+        
         function handleMouseOut(evt) {
             // console.log('mouseout', evt.target)
 
